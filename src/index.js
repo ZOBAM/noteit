@@ -9,6 +9,7 @@ import AddNote from './pages/AddNote'
 import { Provider } from 'react-redux';
 import { store } from './state';
 import Header from './components/Header';
+import NoteDetails from './pages/NoteDetails';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,9 @@ root.render(
         <Route path = '/' element={<App />} />
         <Route path = 'about' element={<About />} />
         <Route path = 'add-note' element={<AddNote />} />
+        <Route path = 'notes' element={<NoteDetails />} >
+          <Route path=':id' element={<NoteDetails />}  />
+        </Route>
       </Routes>
     </Provider>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import { Outlet} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -24,10 +24,8 @@ function App(props) {
       props.deleteNote({id});
   }
   useEffect(()=>{
-    console.log('about to save notes')
-    let savedNote = localStorage.setItem('notes', JSON.stringify(props.notes));
-    console.log('saved the notes', savedNote);
-  }, [props.notes]);
+    document.title = "Note App";
+  }, []);
   return (
     <div className='max-w-3xl bg-gray-300 m-auto min-h-screen p-2'>
       <div className='bg-green-200 p-2 text-right'>
@@ -37,11 +35,11 @@ function App(props) {
         {currentNotes.map((note, ind) => {
           return (
             <li className='p-2 list-decimal' key={ind}>
-              <h3 className='font-bold'>{note.title}</h3>
-              {/* <p>{note.note}</p> */}
-              <div className="flex justify-end pt-2">
-                <button className="p-2 mx-2 border border-red-400">Edit {note.id}</button>
-                <button className="p-2 mx-2 border border-red-400" onClick={()=>handleDelete(note.id)}>Delete {note.id}</button>
+              <div className="flex justify-between items-center mt-2 border p-2">
+                <h3 className='font-bold'>
+                  <Link to={'notes/' + note.id}>{note.title}</Link>
+                </h3>
+                <button className="p-2 mx-2 border border-red-400" onClick={() => handleDelete(note.id)}>Delete x</button>
               </div>
             </li>
           )
@@ -52,7 +50,6 @@ function App(props) {
           pagesLink.map(num=> <span key={num} onClick={()=>setCurrentPage(num)} className='p-2 px-4 border border-blue-400'>{num}</span>)
         }
       </div>
-      <Outlet />
     </div>
   );
 }
