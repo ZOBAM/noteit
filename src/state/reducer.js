@@ -1,6 +1,6 @@
 import * as actions from './actionTypes';
 
- function reducer(state = [
+let initialState = [
     {
         id: 1,
         title: 'Mind Your Mind',
@@ -19,7 +19,8 @@ import * as actions from './actionTypes';
         note: "Don't pretend to be who you are not just to impress people around you. At the end, you will only prove one point, and that is \"Your real self is too insignificant that you are so ashamed to identify with it\".",
         tags: 'be real, no pretense, original'
     }
- ], action){
+];
+ function reducer(state = initialState, action){
     console.log(action);
     switch(action.type){
         case actions.ADD_NOTE:

@@ -1,32 +1,23 @@
 // import logo from './logo.svg';
-import { useState } from 'react';
-import {Link, Outlet} from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {addNote, deleteNote} from './state/actions'
-
+import { deleteNote } from './state/actions';
+import { useState } from 'react';
 function App(props) {
   
-  let [note, setNote] = useState({id:'', title:'', note:'', tags:''});
-  
-  const handleChange = (e)=>{
-    setNote({...note, [`${e.target.name}`]: e.target.value})
-    // console.log(note);
+  let notesPerPage = 5;
+  const numOfNotes = props.notes.length;
+  let numOfPage = Math.ceil(numOfNotes/notesPerPage);
+  let [currentPage, setCurrentPage] = useState(1);
+  let pagesLink = [];
+
+  for(let i = 0; i < numOfPage; i++){
+    pagesLink[i] = i+1;
   }
-  const clearNote = ()=>{
-    setNote({id:'', title:'', note:'', tags:''});
-    
-  }
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    let newID = props.notes.length + 1;
-    let newNote = {...note, id: newID}
-    setNote(newNote);
-    // setNotes([...notes, newNote]);
-    props.addNote(newNote);
-    clearNote();
-  }
+ 
+  let currentNotes = props.notes.slice((currentPage-1)*notesPerPage,currentPage * notesPerPage);
   const handleDelete = (id)=>{
     const confirmDelete = window.confirm('Do you want to delete this note?');
     if(confirmDelete)
@@ -39,16 +30,15 @@ function App(props) {
   }, [props.notes]);
   return (
     <div className='max-w-3xl bg-gray-300 m-auto min-h-screen p-2'>
-      <header className='flex justify-around p-2'>
-        <Link to='/about'>About Note App</Link>
-      </header>
-      <h1 className='bg-red-400 text-center p-3'>Note Taking App with React</h1>
+      <div className='bg-green-200 p-2 text-right'>
+        <span className="p-2 font-mono">({numOfNotes} notes)</span>
+      </div>
       <ol className='bg-white'>
-        {props.notes.map((note, ind) => {
+        {currentNotes.map((note, ind) => {
           return (
             <li className='p-2 list-decimal' key={ind}>
               <h3 className='font-bold'>{note.title}</h3>
-              <p>{note.note}</p>
+              {/* <p>{note.note}</p> */}
               <div className="flex justify-end pt-2">
                 <button className="p-2 mx-2 border border-red-400">Edit {note.id}</button>
                 <button className="p-2 mx-2 border border-red-400" onClick={()=>handleDelete(note.id)}>Delete {note.id}</button>
@@ -57,25 +47,10 @@ function App(props) {
           )
         })}
       </ol>
-      <div>
-        <h2 className="text-center text-white bg-green-500">Add New Note</h2>
-        <form className="p-4" >
-          <div className="flex">
-            <label htmlFor="title" className="min-w-[5rem] text-right pr-2">Note Title</label>
-            <input type="text" onChange={handleChange} value={note.title} name="title" id="" /> <br />
-          </div>
-
-          <div className="flex">
-            <label htmlFor="note" className="min-w-[5rem] text-right pr-2">Note</label>
-            <textarea onChange={handleChange} value={note.note} name="note" id="" cols="30" rows="10" className="my-1"></textarea>
-          </div>
-          <div className="flex">
-            <label htmlFor="tags" className="min-w-[5rem] text-right pr-2">Tags</label>
-            <input type="text" onChange={handleChange} value={note.tags} name="tags" id="" /> <br />
-          </div>
-
-          <input type="submit" value="Add Note" onClick={handleSubmit} className="p-2 border-2 border-green-600 block m-auto" />
-        </form>
+      <div className="p-2 bg-gray-200 flex justify-around">
+        {
+          pagesLink.map(num=> <span key={num} onClick={()=>setCurrentPage(num)} className='p-2 px-4 border border-blue-400'>{num}</span>)
+        }
       </div>
       <Outlet />
     </div>
@@ -87,7 +62,7 @@ function mapStateToProps(state){
   }
 }
 const mapDispatchToProps={
-  addNote, deleteNote
+  deleteNote
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

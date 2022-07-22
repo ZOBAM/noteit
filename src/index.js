@@ -5,8 +5,10 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import About from './pages/About';
+import AddNote from './pages/AddNote'
 import { Provider } from 'react-redux';
 import { store } from './state';
+import Header from './components/Header';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,10 +17,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
     <Provider store={store}>
+      <Header />
       <Routes>
-        <Route path = '/' element={<App />} >
-          <Route path = 'about' element={<About />} />
-        </Route>
+        <Route path = '/' element={<App />} />
+        <Route path = 'about' element={<About />} />
+        <Route path = 'add-note' element={<AddNote />} />
       </Routes>
     </Provider>
     </BrowserRouter>
