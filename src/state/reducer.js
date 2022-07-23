@@ -14,7 +14,7 @@ import {initialState} from './actionTypes'
             return newState;
         case actions.SAVE_EDIT:
             newState = state.map(note=>{
-                if(note.id == action.payload.id){
+                if(note.id === action.payload.id){
                     note.note = action.payload.note;
                     note.title = action.payload.title;
                     note.tags = action.payload.tags;
