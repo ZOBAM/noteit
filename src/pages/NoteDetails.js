@@ -20,6 +20,12 @@ function NoteDetails(props){
             <p className='p-4 text-lg leading-8'>
                 {note.note}
             </p>
+            <div className="p-4 bg-gray-200 mt-3">
+                <span className='py-2 px-4 text-white bg-gray-800 font-bold'>Tags:</span>
+                <div className='font-bold p-3 border border-gray-800 rounded-md mt-1 bg-white'>
+                    {note.tags}
+                </div>
+            </div>
             <div className='flex justify-center p-4 my-8'>
                 <button onClick={()=>navigate(`/add-note?edit=${note.id}`)} className='p-2 px-6 text-xl border border-blue-400'>Edit</button>
                 <button onClick={handleDelete} className='p-2 px-6 text-xl border border-red-400 ml-4'>Delete x</button>

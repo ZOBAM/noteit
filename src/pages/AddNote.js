@@ -52,17 +52,17 @@ function AddNote(props){
         &&
         <form className="p-4" >
           <div className="">
-            <label htmlFor="title" className="min-w-[5rem] text-right pr-2">Note Title</label><br />
-            <input className='border-2 w-full' type="text" onChange={handleChange} value={note.title} name="title" id="" /> <br />
+            <label htmlFor="title" className="min-w-[5rem] text-right pr-2 font-semibold">Title</label><br />
+            <input className='border-2 border-gray-300 p-2 rounded-xl my-2 w-full' type="text" onChange={handleChange} value={note.title} name="title" id="" /> <br />
           </div>
 
           <div className="my-4">
-            <label htmlFor="note" className="min-w-[5rem] text-right pr-2">Note</label><br />
-            <textarea onChange={handleChange} value={note.note} name="note" id="" cols="30" rows="10" className="my-1 border-2 w-full"></textarea>
+            <label htmlFor="note" className="min-w-[5rem] text-right pr-2 font-semibold">Note</label><br />
+            <textarea onChange={handleChange} value={note.note} name="note" id="" cols="30" rows="10" className="border-2 border-gray-300 p-2 rounded-xl my-2 w-full"></textarea>
           </div>
           <div className="">
-            <label htmlFor="tags" className="min-w-[5rem] pr-2 block">Tags</label>
-            <input className='border-2 w-full' type="text" onChange={handleChange} value={note.tags} name="tags" id="" /> <br />
+            <label htmlFor="tags" className="min-w-[5rem] pr-2 font-semibold block">Tags</label>
+            <input className='border-2 border-gray-300 p-2 rounded-xl my-2 w-full' type="text" onChange={handleChange} value={note.tags} name="tags" id="" /> <br />
           </div>
 
           <input type="submit" value={editing? "Save Change" : "Add Note"} onClick={handleSubmit} className="p-2 border-2 border-green-600 block m-auto my-3" />
