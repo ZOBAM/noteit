@@ -5,7 +5,7 @@ import {deleteNote} from '../state/actions'
 function NoteDetails(props){
     let params = useParams();
     let navigate = useNavigate();
-    const note = props.notes.find(elem=>elem.id == params.id);
+    const note = props.notes.find(elem=>elem.id === +params.id);
 
     const handleDelete = ()=>{
         let confirmDelete = window.confirm('Do you want to delete this note?');

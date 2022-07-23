@@ -33,15 +33,16 @@ function AddNote(props){
         clearNote();
         setNoteAdded(true);
         setTimeout(()=>{navigate('/')}, 1500);
+        setSearchParams();
       } 
     useEffect(()=>{
       const noteID = searchParams.get('edit');
       if(noteID){
-        let note = props.notes.find(elem=>elem.id == noteID);
+        let note = props.notes.find(elem=>elem.id === +noteID);
         setEditing(true);
         setNote(note);
       }
-    }, [])  
+    }, [searchParams, props.notes])  
     return(
         <div>
         <h2 className="text-center text-white bg-green-500 mt-6 p-2 font-bold">
