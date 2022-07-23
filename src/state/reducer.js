@@ -12,6 +12,16 @@ import {initialState} from './actionTypes'
             newState = state.filter(note=>note.id !== action.payload.id);
             saveToStorage(newState)
             return newState;
+        case actions.SAVE_EDIT:
+            newState = state.map(note=>{
+                if(note.id == action.payload.id){
+                    note.note = action.payload.note;
+                    note.title = action.payload.title;
+                    note.tags = action.payload.tags;
+                }
+                return note;
+            });
+            return newState;
         default:
             return state;
     }

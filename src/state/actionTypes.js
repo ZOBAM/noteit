@@ -1,5 +1,6 @@
 export const ADD_NOTE = "addNote";
 export const DELETE_NOTE = "deleteNote";
+export const SAVE_EDIT = "saveEdit";
 
 let initialState = [];
 let notes = JSON.parse(localStorage.getItem('notes'));
