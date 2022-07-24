@@ -22,10 +22,7 @@ function AddNote(props){
       const handleSubmit = (e)=>{
         e.preventDefault();
         if (!editing) {
-          let newID = props.notes.length + 1;
-          let newNote = { ...note, id: newID }
-          setNote(newNote);
-          props.addNote(newNote);
+          props.addNote(note);
         }else{
           props.saveEdit(note);
         }
@@ -44,10 +41,10 @@ function AddNote(props){
       }
     }, [searchParams, props.notes])  
     return(
-        <div>
-        <h2 className="text-center text-white bg-green-500 mt-6 p-2 font-bold">
-          { editing? 'Editing' : 'Add New' } Note
-        </h2>
+        <div className='max-w-3xl m-auto shadow-xl'>
+          <h2 className="text-center text-white bg-green-500 mt-6 p-2 font-bold">
+            { editing? 'Editing' : 'Add New' } Note
+          </h2>
         {
         !noteAdded
         &&

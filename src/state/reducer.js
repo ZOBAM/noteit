@@ -1,3 +1,4 @@
+import { getSavedNotes } from '../hooks/getSavedNote';
 import * as actions from './actionTypes';
 import {initialState} from './actionTypes'
 
@@ -5,7 +6,8 @@ import {initialState} from './actionTypes'
     let newState;
     switch(action.type){
         case actions.ADD_NOTE:
-            newState = [...state, action.payload];
+            let time = new Date();
+            newState = [...state, {...action.payload, id: getSavedNotes(true)}];
             saveToStorage(newState);
             return newState;
         case actions.DELETE_NOTE:

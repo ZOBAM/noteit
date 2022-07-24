@@ -1,14 +1,13 @@
+import {getSavedNotes} from "../hooks/getSavedNote";
+
 export const ADD_NOTE = "addNote";
 export const DELETE_NOTE = "deleteNote";
 export const SAVE_EDIT = "saveEdit";
 
-let initialState = [];
-let notes = JSON.parse(localStorage.getItem('notes'));
-if(JSON.parse(localStorage.getItem('notes')))
-    initialState = notes;
+const initialState = getSavedNotes();
 export {initialState};
 
-export const initialState1 = [
+/* export const initialState1 = [
     {
         id: 1,
         title: 'Mind Your Mind',
@@ -33,4 +32,4 @@ export const initialState1 = [
         note: "Don't pretend to be who you are not just to impress people around you. At the end, you will only prove one point, and that is \"Your real self is too insignificant that you are so ashamed to identify with it\".",
         tags: 'be real, no pretense, original'
     }
-];
+]; */

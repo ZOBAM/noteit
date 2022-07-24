@@ -1,0 +1,19 @@
+#added-btn{
+    bottom: -.5rem;
+    animation: animate-notice 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+}
+@keyframes animate-notice {
+    10%{
+        bottom: 0rem;
+    }
+    /* 50%{
+        bottom: 5rem;
+        opacity: .5;
+    } */
+    100%{
+        bottom: 20rem;
+        opacity: 0;
+    }
+}

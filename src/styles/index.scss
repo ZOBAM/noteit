@@ -1,0 +1,21 @@
+header{
+    border: 0px solid red;
+}
+.list-item{
+    overflow: hidden;
+    animation: animate-delete 1s ease 0s;
+}
+@keyframes animate-delete {
+    0%{
+        opacity: .8;
+    }
+    100%{
+        border: 0px solid black;
+        height: 0px;
+        line-height: 0px;
+        padding: 0px;
+        margin: 0px;
+        font-size: 0px;
+        opacity: 0;
+    }
+}

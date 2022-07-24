@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import {deleteNote} from '../state/actions'
+import { formatDate } from '../utilities/helpers';
 
 function NoteDetails(props){
     let params = useParams();
@@ -15,8 +16,13 @@ function NoteDetails(props){
         }
     }
     return(
-        <div>
-            <h1 className='text-xl font-bold text-center p-2 mt-6'>{note.title}</h1>
+        <div className='max-w-3xl m-auto shadow-xl'>
+            <h1 className='text-xl font-bold text-center p-2 mt-6'>
+                {note.title} <br />
+                <span className="text-sm font-normal text-gray-600">
+                    {formatDate(note)}
+                </span>
+            </h1>
             <p className='p-4 text-lg leading-8'>
                 {note.note}
             </p>
@@ -27,8 +33,8 @@ function NoteDetails(props){
                 </div>
             </div>
             <div className='flex justify-center p-4 my-8'>
-                <button onClick={()=>navigate(`/add-note?edit=${note.id}`)} className='p-2 px-6 text-xl border border-blue-400'>Edit</button>
-                <button onClick={handleDelete} className='p-2 px-6 text-xl border border-red-400 ml-4'>Delete x</button>
+                <button onClick={()=>navigate(`/add-note?edit=${note.id}`)} className='p-2 px-6 text-xl border border-blue-400 hover:bg-blue-700 hover:text-white'>Edit</button>
+                <button onClick={handleDelete} className='p-2 px-6 text-xl border border-red-400 ml-4  hover:bg-red-600 hover:text-white'>Delete x</button>
             </div>
         </div>
     )
