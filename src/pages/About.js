@@ -41,11 +41,11 @@ function About(props){
             <p>
                 
             </p>
-            <p className="p-2 mb-6 mt-12 leading-8 relative border-2 border-green-800 rounded-xl">
+            <p className="p-2 mb-6 mt-12 leading-8 relative border-2 border-green-800 rounded-xl w-[94%] m-auto">
                 <span className="p-3 font-bold block text-center absolute w-full -top-8">
                     <span className='py-2 px-4 border-2 border-green-800 rounded-xl bg-white'>Quick Try</span> 
                 </span>
-                <span className='p-12 inline-block'>
+                <span className='p-8 md:p-12 inline-block'>
                     If you just want to check out the app to see how it works without having to fill out the form several times, don't worry. I thought about that and created the button below for you. <br /><br />
                     Just click the button as many times as you want and that many notes will be added for you (NOTE: <span className='italic'>The same note will be added for those many times. Also note that for now, your notes are saved in your browser and will be lost if you clear browser storage.</span>).
                 </span>
