@@ -7,7 +7,7 @@ import {initialState} from './actionTypes'
     switch(action.type){
         case actions.ADD_NOTE:
             let time = new Date();
-            newState = [...state, {...action.payload, id: getSavedNotes(true)}];
+            newState = [...state, {...action.payload, id: getSavedNotes(true), createdAt: time.toString()}];
             saveToStorage(newState);
             return newState;
         case actions.DELETE_NOTE:

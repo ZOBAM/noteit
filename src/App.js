@@ -77,7 +77,7 @@ function App(props) {
       </div>
       <div className="p-2 bg-gray-200 w-full flex-wrap flex justify-around">
         {
-          pagesLink.map(num=> <span key={num} onClick={()=>setCurrentPage(num)} className={`p-2 px-4 border border-blue-400 cursor-pointer ${num == currentPage? 'bg-green-400': ''}`}>{num}</span>)
+          pagesLink.map(num=> <span key={num} onClick={()=>setCurrentPage(num)} className={`p-2 px-4 border border-blue-400 cursor-pointer ${num === currentPage? 'bg-green-400': ''}`}>{num}</span>)
         }
       </div>
     </div>
