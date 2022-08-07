@@ -77,7 +77,7 @@ function App(props) {
             <div className='text-center bg-white p-2'>
               <span>{checkedNotes.length} Note(s) selected</span>
               <hr className='py-2' />
-              <button disabled={true} className={`${checkedNotes.length ? '' : 'disabled'} p-2 mx-2 border border-red-400 rounded-md hover:bg-red-600 hover:text-white`} onClick={() => handleDelete(checkedNotes)}>Delete X</button>
+              <button disabled={checkedNotes.length ? false : true} className={`${checkedNotes.length ? '' : 'disabled'} p-2 mx-2 border border-red-400 rounded-md hover:bg-red-600 hover:text-white`} onClick={() => handleDelete(checkedNotes)}>Delete X</button>
             </div>
           </div>
         }
